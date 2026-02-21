@@ -26,8 +26,37 @@ export const writeProducts = arr => {
     <p class="products__title">${title}</p>
     <p class="products__brand"><span class="products__brand--bold">Brand: ${brand}</span></p>
     <p class="products__category">Category: ${category}</p>
-    <p class="products__price">Price: ${price}</p>
+    <p class="products__price">Price: ${price}$</p>
  </li>
 `
   ).join("");
 };
+
+export const writemodalById = ({
+        id,
+      title,
+      description,
+      category,
+      price,
+      thumbnail,
+      brand,
+      shippingInformation,
+      returnPolicy,
+    tags,
+    images,
+    }) =>{
+    return `
+    <img class="modal-product__img" src="${images[0]}" alt="${title}" />
+      <div class="modal-product__content">
+        <p class="modal-product__title">${title}</p>
+        <ul class="modal-product__tags">
+        ${tags.map(tag => `<li>${tag}</li>`).join("")}
+        </ul>
+        <p class="modal-product__description">${description}</p>
+        <p class="modal-product__shipping-information">Shipping: ${shippingInformation}</p>
+        <p class="modal-product__return-policy">Return Policy: ${returnPolicy}</p>
+        <p class="modal-product__price">Price: ${price}$</p>
+        <button class="modal-product__buy-btn" type="button">Buy</button>
+      </div>
+    `
+}
